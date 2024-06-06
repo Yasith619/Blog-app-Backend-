@@ -6,18 +6,22 @@ const bodyParser = require('body-parser');
 const database=require('./db')
 const postRoute=require('./routes/posts')
 const authRoute=require('./routes/auth')
+const cookieParser = require('cookie-parser')
 
 
 app.use(cors())
 app.use(bodyParser.json());
+app.use(cookieParser())
 
 app.listen(port,()=>{
     console.log(`App listening on PORT ${port}`)
    
 });
 
-app.use('/api',postRoute)
+
 app.use('/Api/user',authRoute)
+app.use('/Api/Blog/',postRoute)
+
 
 
 //db connect
