@@ -66,7 +66,7 @@ const login = (req, res) => {
                     return res.status(401).json('User or password incorrect')
                 }
                 const token = jwt.sign({ id: data[0].id }, process.env.JWT_SECRET_KEY)
-                const { password:_, ...other } = data[0]
+                const { password:_, ...other } = data
                 return res.status(200).cookie('access_token', token, { httpOnly: true }).json(other)
             }
 
@@ -78,7 +78,10 @@ const login = (req, res) => {
 
 
 const logout = (req, res) => {
-    res.send("this is logout end point")
+    res.clearCookie('access_token',{
+        sameSite:"none",
+        secure:true
+    }).status(200).json("log out sucess !")
 }
 
 module.exports = {
