@@ -1,6 +1,5 @@
 const db = require('../db')
 
-
 // Get Blog all posts
 
 const getPost = (req, res) => {

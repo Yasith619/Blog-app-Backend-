@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const database=require('./db')
 const postRoute=require('./routes/posts')
 const authRoute=require('./routes/auth')
+const userRoute=require('./routes/users')
 const cookieParser = require('cookie-parser')
 
 
@@ -21,6 +22,7 @@ app.listen(port,()=>{
 
 app.use('/Api/user',authRoute)
 app.use('/Api/Blog/',postRoute)
+app.use('/Api/Blog/user/',userRoute)
 
 
 

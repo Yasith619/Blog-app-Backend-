@@ -1,4 +1,3 @@
-// auth controler module
 const db = require('../db')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -76,6 +75,7 @@ const login = (req, res) => {
     }
 }
 
+//LOGOUT USER
 
 const logout = (req, res) => {
     res.clearCookie('access_token',{
@@ -83,6 +83,8 @@ const logout = (req, res) => {
         secure:true
     }).status(200).json("log out sucess !")
 }
+
+
 
 module.exports = {
     register,
